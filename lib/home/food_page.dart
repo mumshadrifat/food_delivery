@@ -1,7 +1,9 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/utils/dimens.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_with_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
@@ -16,7 +18,7 @@ class MyFoodPage extends StatefulWidget {
 class _MyFoodPageState extends State<MyFoodPage> {
   PageController pageController = PageController(viewportFraction: .80);
   var _currantPageValue = 0.0;
-  var height = 220;
+  var height = Dimension.pageViewContainerHeight;
 
   var scaleFactor = 0.9;
 
@@ -39,16 +41,33 @@ class _MyFoodPageState extends State<MyFoodPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 285,
 
-      //color: Colors.blue,
-      child: PageView.builder(
-          controller: pageController,
-          itemCount: 4,
-          itemBuilder: (context, position) {
-            return _builPageItem(position);
-          }),
+    return Column(
+      children: [
+        Container(
+          height: Dimension.pageMainContainerHeight,
+
+          //color: Colors.blue,
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 4,
+              itemBuilder: (context, position) {
+                return _builPageItem(position);
+              }),
+        ),
+        DotsIndicator(
+          dotsCount: 4,
+          position: _currantPageValue,
+
+          decorator: DotsDecorator(
+            activeColor: AppColors.mainColor,
+            size: const Size.square(15.0),
+            activeSize: const Size(22.0, 9.0),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
+      ],
     );
   }
 
@@ -67,10 +86,10 @@ class _MyFoodPageState extends State<MyFoodPage> {
       matrix = Matrix4.diagonal3Values(1, currentScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
     } else if (position == _currantPageValue.floor() - 1) {
-            var currentScale = 0.8;
-            var currTrans = height * (1 - currentScale) / 2;
-         matrix = Matrix4.diagonal3Values(1, currentScale, 1);
-        matrix = Matrix4.diagonal3Values(1, currentScale, 1)
+      var currentScale = 0.8;
+      var currTrans = height * (1 - currentScale) / 2;
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
     } else {
       var currentScale = 0.8;
@@ -84,10 +103,10 @@ class _MyFoodPageState extends State<MyFoodPage> {
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(left: 5, right: 5, top: 10, bottom: 10),
-            height: 200,
+            margin: EdgeInsets.only( top:Dimension.spacingHeight10, bottom:Dimension.spacingHeight10,left: Dimension.spacingWidth5,right: Dimension.spacingWidth5),
+            height: Dimension.pageViewContainerHeight,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimension.radius30),
                 color: position.isEven ? Color(0xFF69c5df) : Color(0xFF667898),
                 image: const DecorationImage(
                     fit: BoxFit.fill,
@@ -98,19 +117,37 @@ class _MyFoodPageState extends State<MyFoodPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
-              margin: EdgeInsets.only(left: 30, right: 30, bottom: 10),
-              padding: EdgeInsets.only(left: 15, top: 15, right: 15),
+              height:Dimension.textViewContainerHeigt,
+              margin: EdgeInsets.only(left:Dimension.spacingWidth30, right:Dimension.spacingWidth30 ,bottom:Dimension.spacingHeight10),
+              padding: EdgeInsets.only(left: Dimension.spacingWidth15, top: Dimension.spacingHeight15, right:Dimension.spacingWidth15,bottom: Dimension.spacingHeight5),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimension.radius20),
                 color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFFe8e8e8),
+                    offset: Offset(0, 5),
+                    blurRadius: 0.5,
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(5, 0),
+                    blurRadius: 0.8,
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-5, 0),
+                    blurRadius: 0.8,
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   BigText(text: "Chinese Side"),
                   SizedBox(
-                    height: 10,
+                    height: Dimension.spacingHeight10,
                   ),
                   Row(
                     children: [
@@ -127,41 +164,43 @@ class _MyFoodPageState extends State<MyFoodPage> {
                         itemSize: 20,
                       ),
                       SizedBox(
-                        width: 10,
+                        width: Dimension.spacingHeight10,
                       ),
                       SmallText(text: "4.5"),
                       SizedBox(
-                        width: 10,
+                        width: Dimension.spacingHeight10,
                       ),
                       SmallText(text: "22"),
                       SizedBox(
-                        width: 10,
+                        width: Dimension.spacingHeight10,
                       ),
                       SmallText(text: "Comments"),
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                 Expanded(child: SizedBox()),
                   Row(
                     children: [
                       IconAndText(
                           icon: Icons.circle_sharp,
+                          iconSize:Dimension.iconSize20,
                           text: "normal",
                           iconColor: AppColors.iconColor1),
+
                       SizedBox(
-                        width: 10,
+                        width:Dimension.spacingHeight10,
                       ),
                       IconAndText(
                           icon: Icons.location_on,
+                          iconSize: Dimension.iconSize20,
                           text: "1.5 km",
                           iconColor: AppColors.iconColor1),
                       SizedBox(
-                        width: 10,
+                        width:Dimension.spacingHeight10,
                       ),
                       IconAndText(
                           icon: Icons.watch_later_outlined,
                           text: "32 min",
+                          iconSize: Dimension.iconSize20,
                           iconColor: AppColors.iconColor2),
                     ],
                   )

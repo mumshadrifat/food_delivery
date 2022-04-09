@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:food_delivery/utils/dimens.dart';
 
 class SmallText extends StatelessWidget {
   Color? color;
@@ -24,10 +25,11 @@ class SmallText extends StatelessWidget {
       maxLines: 1,
       overflow: overflow,
       style: TextStyle(
-          fontSize: size,
+          fontSize: Dimension.smallFont,
           fontFamily:'Roboto' ,
           fontWeight: FontWeight.w400,
           height: height,
+        color: color,
       ),
     );
   }
