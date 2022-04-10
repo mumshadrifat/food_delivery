@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/home/food_page.dart';
+
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimens.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
+
+import 'food_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -14,19 +16,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-    print("height of this phone is"+MediaQuery.of(context).size.height.toString());
-    print("screen height"+Dimension.pageViewContainerHeight.toString());
+    print("height of this phone is" +
+        MediaQuery.of(context).size.height.toString());
+    print("screen height" + Dimension.pageViewContainerHeight.toString());
     return SafeArea(
       child: Scaffold(
           body: Column(
         children: [
           Container(
             //color: Colors.blue,
-            margin: EdgeInsets.only(top: Dimension.spacingHeight20,bottom: Dimension.spacingHeight15),
-            padding: EdgeInsets.only(left: Dimension.spacingWidth20,right: Dimension.spacingWidth20),
+            margin: EdgeInsets.only(
+                top: Dimension.height20, bottom: Dimension.height15),
+            padding: EdgeInsets.only(
+                left: Dimension.width20, right: Dimension.width20),
             child: Column(
               children: [
                 Row(
@@ -56,9 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: Dimension.searchContainerHeight,
                         width: Dimension.searchContainerWidth,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Dimension.radius15),
+                            borderRadius:
+                                BorderRadius.circular(Dimension.radius15),
                             color: AppColors.mainColor),
-                        child: Icon(Icons.search,size: Dimension.iconSize24,
+                        child: Icon(Icons.search,
+                            size: Dimension.iconSize24,
                             color: AppColors.buttonBackgroundColor),
                       ),
                     ),
@@ -67,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          MyFoodPage(),
+          Expanded(child: SingleChildScrollView(child: MyFoodPage())),
         ],
       )),
     );

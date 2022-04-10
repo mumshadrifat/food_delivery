@@ -2,7 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/home/home_page.dart';
+import 'package:food_delivery/pages/home/home_page.dart';
+
 import 'package:get/get.dart';
 void main() {
   runApp(const MyApp());

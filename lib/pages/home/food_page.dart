@@ -41,9 +41,9 @@ class _MyFoodPageState extends State<MyFoodPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
+        //=========================================================>food items slider view and textview
         Container(
           height: Dimension.pageMainContainerHeight,
 
@@ -55,10 +55,10 @@ class _MyFoodPageState extends State<MyFoodPage> {
                 return _builPageItem(position);
               }),
         ),
+        //======================================================================>Dots Idicator
         DotsIndicator(
           dotsCount: 4,
           position: _currantPageValue,
-
           decorator: DotsDecorator(
             activeColor: AppColors.mainColor,
             size: const Size.square(15.0),
@@ -67,6 +67,103 @@ class _MyFoodPageState extends State<MyFoodPage> {
                 borderRadius: BorderRadius.circular(5.0)),
           ),
         ),
+        SizedBox(
+          height: Dimension.height30,
+        ),
+        //==========================================================================>P0pular category and food pair
+        Container(
+          margin: EdgeInsets.only(
+              left: Dimension.width20, right: Dimension.width20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(
+                width: Dimension.width10,
+              ),
+              BigText(text: "."),
+              SizedBox(
+                width: Dimension.width10,
+              ),
+              SmallText(
+                text: "Food pairing",
+                color: AppColors.mainColor,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: Dimension.height30,
+        ),
+
+        //=========================================================================>ListView
+
+        ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 8,
+            itemBuilder: (context, index) => Container(
+                margin: EdgeInsets.only(
+                    left: Dimension.width20,
+                    right: Dimension.width20,
+                    bottom: Dimension.height10),
+                child: Row(
+                  children: [
+                    Container(
+                      height: Dimension.listViewImageHeight,
+                      width: Dimension.listViewImageWidth,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimension.radius20),
+                          color: Colors.white12,
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                              "assets/image/pizza.jpg",
+                            ),
+                          )),
+                    ),
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(right: Dimension.width20),
+                        padding: EdgeInsets.only(right: Dimension.width5),
+                        height: Dimension.listViewTextContainerHeight,
+
+                        //  margin: EdgeInsets.only(top: Dimension.height20,bottom: Dimension.height20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              bottomRight:
+                                  Radius.circular(Dimension.radius15),
+                              topRight: Radius.circular(Dimension.radius15)),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: Dimension.width10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BigText(
+                                  text: "Nutrtious food and fruits Salad"),
+                              SizedBox(height: Dimension.height10,),
+                              SmallText(text: "With chinese characterstics "),
+                              SizedBox(height: Dimension.height10,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                children: [
+                                  IconAndText(icon: Icons.circle, text: "Normal", iconColor: AppColors.iconColor1),
+                                  IconAndText(icon:Icons.location_on, text:"1.2 km ", iconColor:AppColors.iconColor1),
+                                  IconAndText(icon: Icons.watch_later_outlined, text:"12 min", iconColor:AppColors.iconColor2),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                )))
       ],
     );
   }
@@ -103,7 +200,11 @@ class _MyFoodPageState extends State<MyFoodPage> {
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only( top:Dimension.spacingHeight10, bottom:Dimension.spacingHeight10,left: Dimension.spacingWidth5,right: Dimension.spacingWidth5),
+            margin: EdgeInsets.only(
+                top: Dimension.height10,
+                bottom: Dimension.height10,
+                left: Dimension.width5,
+                right: Dimension.width5),
             height: Dimension.pageViewContainerHeight,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimension.radius30),
@@ -117,9 +218,16 @@ class _MyFoodPageState extends State<MyFoodPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height:Dimension.textViewContainerHeigt,
-              margin: EdgeInsets.only(left:Dimension.spacingWidth30, right:Dimension.spacingWidth30 ,bottom:Dimension.spacingHeight10),
-              padding: EdgeInsets.only(left: Dimension.spacingWidth15, top: Dimension.spacingHeight15, right:Dimension.spacingWidth15,bottom: Dimension.spacingHeight5),
+              height: Dimension.textViewContainerHeigt,
+              margin: EdgeInsets.only(
+                  left: Dimension.width30,
+                  right: Dimension.width30,
+                  bottom: Dimension.height10),
+              padding: EdgeInsets.only(
+                  left: Dimension.width15,
+                  top: Dimension.height15,
+                  right: Dimension.width15,
+                  bottom: Dimension.height5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimension.radius20),
                 color: Colors.white,
@@ -143,11 +251,10 @@ class _MyFoodPageState extends State<MyFoodPage> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-
                 children: [
                   BigText(text: "Chinese Side"),
                   SizedBox(
-                    height: Dimension.spacingHeight10,
+                    height: Dimension.height10,
                   ),
                   Row(
                     children: [
@@ -164,30 +271,29 @@ class _MyFoodPageState extends State<MyFoodPage> {
                         itemSize: 20,
                       ),
                       SizedBox(
-                        width: Dimension.spacingHeight10,
+                        width: Dimension.height10,
                       ),
                       SmallText(text: "4.5"),
                       SizedBox(
-                        width: Dimension.spacingHeight10,
+                        width: Dimension.height10,
                       ),
                       SmallText(text: "22"),
                       SizedBox(
-                        width: Dimension.spacingHeight10,
+                        width: Dimension.height10,
                       ),
                       SmallText(text: "Comments"),
                     ],
                   ),
-                 Expanded(child: SizedBox()),
+                  Expanded(child: SizedBox()),
                   Row(
                     children: [
                       IconAndText(
                           icon: Icons.circle_sharp,
-                          iconSize:Dimension.iconSize20,
+                          iconSize: Dimension.iconSize20,
                           text: "normal",
                           iconColor: AppColors.iconColor1),
-
                       SizedBox(
-                        width:Dimension.spacingHeight10,
+                        width: Dimension.height10,
                       ),
                       IconAndText(
                           icon: Icons.location_on,
@@ -195,7 +301,7 @@ class _MyFoodPageState extends State<MyFoodPage> {
                           text: "1.5 km",
                           iconColor: AppColors.iconColor1),
                       SizedBox(
-                        width:Dimension.spacingHeight10,
+                        width: Dimension.height10,
                       ),
                       IconAndText(
                           icon: Icons.watch_later_outlined,
