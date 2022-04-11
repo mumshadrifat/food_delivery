@@ -12,6 +12,7 @@ static final double  pageViewContainerHeight=screenHeight/3.84;
 static final double textViewContainerHeigt=screenHeight/7.03;
 
 //============>Icon sizes
+  static final double  iconSize16=screenHeight/(screenHeight/16);
 static final double  iconSize20=screenHeight/(screenHeight/20);
   static final double  iconSize24 =screenHeight/(screenHeight/24);
 static final double IconSizeLarge=28;
@@ -24,6 +25,7 @@ static final double height15=screenHeight/(screenHeight/15);
 static final double height20=screenHeight/(screenHeight/20);
 static final double height30=screenHeight/(screenHeight/30);
 static final double height45=screenHeight/(screenHeight/45);
+  static final double height100=screenHeight/(screenHeight/100);
 
 
   // ==============>spacing width
@@ -40,6 +42,7 @@ static final double height45=screenHeight/(screenHeight/45);
 static final double smallFont=screenHeight/(screenHeight/10);
 static final double mediumFont=screenHeight/(screenHeight/16);
 static final double largeFont=screenHeight/(screenHeight/20);
+  static final double extraLargeFont=screenHeight/(screenHeight/26);
 
 //Radius
   static final double radius15=screenHeight/(screenHeight/15);
@@ -51,5 +54,9 @@ static final double listViewImageWidth=screenWidth/(screenWidth/110);
 static final double listViewTextContainerHeight=screenHeight/(screenHeight/90);
 
 
+//Popular details  page
+static final double popularPageImageHeight=screenHeight/(screenHeight/340);
+static final double popularTextContainerHeight=screenHeight-popularPageImageHeight;
+static final double bottomBarHeight=screenHeight/(screenHeight/120);
 
 }

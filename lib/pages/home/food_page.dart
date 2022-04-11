@@ -8,6 +8,8 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_with_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
+import '../../widgets/app_column.dart';
+
 class MyFoodPage extends StatefulWidget {
   const MyFoodPage({Key? key}) : super(key: key);
 
@@ -249,69 +251,7 @@ class _MyFoodPageState extends State<MyFoodPage> {
                   ),
                 ],
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BigText(text: "Chinese Side"),
-                  SizedBox(
-                    height: Dimension.height10,
-                  ),
-                  Row(
-                    children: [
-                      /*  RatingBar.builder(
-
-                              itemBuilder: (context, _) => Icon(Icons.star),
-                              minRating: 1,
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              }),*/
-                      RatingBarIndicator(
-                        itemBuilder: (context, index) => Icon(Icons.star),
-                        itemCount: 5,
-                        itemSize: 20,
-                      ),
-                      SizedBox(
-                        width: Dimension.height10,
-                      ),
-                      SmallText(text: "4.5"),
-                      SizedBox(
-                        width: Dimension.height10,
-                      ),
-                      SmallText(text: "22"),
-                      SizedBox(
-                        width: Dimension.height10,
-                      ),
-                      SmallText(text: "Comments"),
-                    ],
-                  ),
-                  Expanded(child: SizedBox()),
-                  Row(
-                    children: [
-                      IconAndText(
-                          icon: Icons.circle_sharp,
-                          iconSize: Dimension.iconSize20,
-                          text: "normal",
-                          iconColor: AppColors.iconColor1),
-                      SizedBox(
-                        width: Dimension.height10,
-                      ),
-                      IconAndText(
-                          icon: Icons.location_on,
-                          iconSize: Dimension.iconSize20,
-                          text: "1.5 km",
-                          iconColor: AppColors.iconColor1),
-                      SizedBox(
-                        width: Dimension.height10,
-                      ),
-                      IconAndText(
-                          icon: Icons.watch_later_outlined,
-                          text: "32 min",
-                          iconSize: Dimension.iconSize20,
-                          iconColor: AppColors.iconColor2),
-                    ],
-                  )
-                ],
-              ),
+              child: AppColumn(text: "Chinese Food",),
             ),
           )
         ],
