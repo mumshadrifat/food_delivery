@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:food_delivery/utils/dimens.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
+import 'package:food_delivery/widgets/expandable_text.dart';
 
 import '../../utils/colors.dart';
 import '../../widgets/app_column.dart';
@@ -16,7 +17,6 @@ class PopularFoodDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Stack(
@@ -59,6 +59,7 @@ class PopularFoodDetails extends StatelessWidget {
                 left: 0,
                 right: 0,
                 top: Dimension.popularPageImageHeight - 30,
+                bottom: 0,
                 child: Container(
                   height: Dimension.popularTextContainerHeight,
                   width: 370,
@@ -85,25 +86,43 @@ class PopularFoodDetails extends StatelessWidget {
                         height: Dimension.height30,
                       ),
                       BigText(text: "Introduction"),
-
+                      SizedBox(
+                        height: Dimension.height20,
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                            child: ExpandableText(
+                                text:
+                                  "The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of ")),
+                      ),
                     ],
                   ),
                 ))
           ],
         ),
         bottomNavigationBar: Container(
-          padding: EdgeInsets.only(left: Dimension.width20,right: Dimension.width20,top: Dimension.height30,bottom: Dimension.height30),
+          padding: EdgeInsets.only(
+              left: Dimension.width20,
+              right: Dimension.width20,
+              top: Dimension.height30,
+              bottom: Dimension.height30),
           height: Dimension.bottomBarHeight,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft:Radius.circular(Dimension.radius20*2) ,topRight:Radius.circular(Dimension.radius20*2) ),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Dimension.radius20 * 2),
+                topRight: Radius.circular(Dimension.radius20 * 2)),
             color: AppColors.buttonBackgroundColor,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-
-                padding: EdgeInsets.only(left:Dimension.width20,right:Dimension.width20,top: Dimension.height20,bottom: Dimension.height20),
+                padding: EdgeInsets.only(
+                    left: Dimension.width20,
+                    right: Dimension.width20,
+                    top: Dimension.height20,
+                    bottom: Dimension.height20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimension.radius20),
                   color: Colors.white,
@@ -118,13 +137,18 @@ class PopularFoodDetails extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(left:Dimension.width20,right:Dimension.width20,top: Dimension.height20,bottom: Dimension.height20),
-
+                padding: EdgeInsets.only(
+                    left: Dimension.width20,
+                    right: Dimension.width20,
+                    top: Dimension.height20,
+                    bottom: Dimension.height20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimension.radius20),
                   color: AppColors.mainColor,
                 ),
-                child: BigText(text: "\$ 10 |  add to cart",),
+                child: BigText(
+                  text: "\$ 10 |  add to cart",
+                ),
               )
             ],
           ),

@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/food/popular_food_details.dart';
+import 'package:food_delivery/pages/food/recommended_food.dart';
 import 'package:food_delivery/pages/home/home_page.dart';
 
 import 'package:get/get.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:PopularFoodDetails(),
+      home:RecommendedFoodDetails(),
     );
   }
 }
