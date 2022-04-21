@@ -2,12 +2,18 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controller/popular_product_controller/popular_product_controller.dart';
 import 'package:food_delivery/pages/food/popular_food_details.dart';
 import 'package:food_delivery/pages/food/recommended_food.dart';
 import 'package:food_delivery/pages/home/home_page.dart';
+import 'helper/dependency.dart' as dep;
 
 import 'package:get/get.dart';
 void main() {
+  //ensure the intialization of dependecy (api client,repositories)
+  WidgetsFlutterBinding().ensureVisualUpdate();
+  dep.init();
+
   runApp(const MyApp());
 }
 
@@ -17,9 +23,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularProductController>().getPopularProductList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'E-Rifat',
       theme: ThemeData(
         // This is the theme of your application.
         //
