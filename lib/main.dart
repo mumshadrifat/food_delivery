@@ -10,7 +10,7 @@ import 'helper/dependency.dart' as dep;
 
 import 'package:get/get.dart';
 void main() {
-  //ensure the intialization of dependecy (api client,repositories)
+  //Ensure the initialization of dependency (api client,repositories)
   WidgetsFlutterBinding().ensureVisualUpdate();
   dep.init();
 
