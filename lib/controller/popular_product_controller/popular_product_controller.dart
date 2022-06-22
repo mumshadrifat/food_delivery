@@ -11,6 +11,8 @@ class PopularProductController extends GetxController {
 
   ///private variable so that when I need to read it from ui
   List<dynamic> get popularProductList => _popularProductList;
+  bool _isLoaded=false;
+  bool get isLoaded=>_isLoaded;
 
   ///For Ui I need to this
 
@@ -21,6 +23,8 @@ class PopularProductController extends GetxController {
       print("got it");
       _popularProductList.addAll(
           Products.fromJson(response.body).products!.toList(growable: true));
+      print(_popularProductList);
+      _isLoaded=true;
       update();
     } else {
       print(response.status);

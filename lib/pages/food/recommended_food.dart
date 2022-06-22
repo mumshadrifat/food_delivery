@@ -21,10 +21,13 @@ class RecommendedFoodDetails extends StatelessWidget {
             parent: AlwaysScrollableScrollPhysics()),
         slivers: [
           SliverAppBar(
+            //automatically back button rise false
+            automaticallyImplyLeading: false,
             toolbarHeight: Dimension.height30 * 2 + Dimension.height5,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+               
                 AppIcon(icon: Icons.clear, iconSize: Dimension.height20),
                 AppIcon(
                     icon: Icons.add_shopping_cart_outlined,
@@ -131,15 +134,15 @@ class RecommendedFoodDetails extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.only(
-                      left: Dimension.width30,
-                      right: Dimension.width30,
+                      left: Dimension.width20,
+                      right: Dimension.width20,
                       top: Dimension.height20,
                       bottom: Dimension.height20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimension.radius20),
                     color: Colors.white,
                   ),
-                  child:Icon(Icons.favorite,color: Colors.red,size:Dimension.height30,),
+                  child:Icon(Icons.favorite,color:AppColors.mainColor,size:Dimension.height30,),
                 ),
                 Container(
                   padding: EdgeInsets.only(

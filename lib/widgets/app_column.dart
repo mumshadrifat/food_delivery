@@ -1,4 +1,3 @@
-
 import 'package:food_delivery/utils/dimens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,8 @@ import 'icon_with_text.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;
-  const AppColumn({Key? key,required this.text}) : super(key: key);
+
+  const AppColumn({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,10 @@ class AppColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BigText(text: text,size: Dimension.extraLargeFont,),
+        BigText(
+          text: text,
+          size: Dimension.extraLargeFont,
+        ),
         SizedBox(
           height: Dimension.height10,
         ),
@@ -34,8 +37,7 @@ class AppColumn extends StatelessWidget {
                                     print(rating);
                                   }),*/
             RatingBarIndicator(
-              itemBuilder: (context, index) =>
-                  Icon(Icons.star),
+              itemBuilder: (context, index) => Icon(Icons.star),
               itemCount: 5,
               itemSize: 20,
             ),
@@ -56,32 +58,36 @@ class AppColumn extends StatelessWidget {
         SizedBox(
           height: Dimension.height10,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconAndText(
-                icon: Icons.circle_sharp,
-                iconSize: Dimension.iconSize20,
-                text: "normal",
-                iconColor: AppColors.iconColor1),
-            SizedBox(
-              width: Dimension.height10,
-            ),
-            IconAndText(
-                icon: Icons.location_on,
-                iconSize: Dimension.iconSize20,
-                text: "1.5 km",
-                iconColor: AppColors.iconColor1),
-            SizedBox(
-              width: Dimension.height10,
-            ),
-            IconAndText(
-                icon: Icons.watch_later_outlined,
-                text: "32 min",
-                iconSize: Dimension.iconSize20,
-                iconColor: AppColors.iconColor2),
-          ],
-        )
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconAndText(
+                  icon: Icons.circle_sharp,
+                  iconSize: Dimension.iconSize20,
+                  text: "normal",
+                  iconColor: AppColors.iconColor1),
+              SizedBox(
+                width: Dimension.height10,
+              ),
+              IconAndText(
+                  icon: Icons.location_on,
+                  iconSize: Dimension.iconSize20,
+                  text: "1.5 km",
+                  iconColor: AppColors.iconColor1),
+              SizedBox(
+                width: Dimension.height10,
+              ),
+              IconAndText(
+                  icon: Icons.watch_later_outlined,
+                  text: "32 min",
+                  iconSize: Dimension.iconSize20,
+                  iconColor: AppColors.iconColor2),
+            ],
+
+          ),
+        ),
+
       ],
     );
   }

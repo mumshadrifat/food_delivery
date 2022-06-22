@@ -3,8 +3,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controller/popular_product_controller/popular_product_controller.dart';
+import 'package:food_delivery/controller/popular_product_controller/recommended_product_controller.dart';
 import 'package:food_delivery/pages/food/popular_food_details.dart';
 import 'package:food_delivery/pages/food/recommended_food.dart';
+import 'package:food_delivery/pages/home/food_page.dart';
 import 'package:food_delivery/pages/home/home_page.dart';
 import 'helper/dependency.dart' as dep;
 
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'E-Rifat',
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:RecommendedFoodDetails(),
+      home:MyHomePage(),
     );
   }
 }
