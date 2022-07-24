@@ -29,7 +29,7 @@ class PopularProductController extends GetxController {
 
 
   int get quantity => _quantity;
-  int get cartItems => _cartItems + quantity;
+  int get cartItems => _cartItems + _quantity;
 
   ///For Ui I need to this
 
@@ -66,18 +66,18 @@ class PopularProductController extends GetxController {
       Get.snackbar(
         "Item Count",
         "You can't add more items",
-        backgroundColor: AppColors.mainColor,
-        colorText: Colors.white,
+       /* backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,*/
       );
       return 10;
     } else if (_cartItems+quantity < 0) {
       Get.snackbar(
         "Item Count",
         "You can't reduece more items",
-        backgroundColor: AppColors.mainColor,
-        colorText: Colors.white,
+       /* backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,*/
       );
-      return 0;
+      return _quantity;
     } else {
       return quantity;
     }
@@ -94,7 +94,6 @@ class PopularProductController extends GetxController {
     if(exist){
       _cartItems=_cart.getQuantity(product);
     }
-
   }
 //Add to cart ===========================================================
   void addItem(ProductsModel product) {
@@ -102,8 +101,8 @@ class PopularProductController extends GetxController {
       Get.snackbar(
         "Add Item",
         "${quantity}:"+"Item added into the cart",
-        backgroundColor: AppColors.mainColor,
-        colorText: Colors.white,
+        /*backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,*/
       );
       _cart.addItems(product, _quantity);
       _cartItems=_cartItems+_quantity;
@@ -112,6 +111,7 @@ class PopularProductController extends GetxController {
       _cart.items.forEach((key, value) {
         print("Added item id:::"+value.id.toString()+"    quantity:::"+value.quantity.toString());
       });
+      update();
 
 
 

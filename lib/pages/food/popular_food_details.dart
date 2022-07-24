@@ -26,8 +26,9 @@ class PopularFoodDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<PopularProductController>().popularProductList[pageId];
-        Get.find<PopularProductController>().initialData(product,Get.find<CartController>());
-        
+    Get.find<PopularProductController>()
+        .initialData(product, Get.find<CartController>());
+
     return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.white,
@@ -64,12 +65,28 @@ class PopularFoodDetails extends StatelessWidget {
                         },
                         child: AppIcon(
                             icon: Icons.arrow_back_ios,
-                            iconSize: Dimension.iconSize16),
+                            iconSize: Dimension.iconSize20),
                       ),
-                      GetBuilder<PopularProductController>(builder:(controller) {
-                        return AppIcon(
-                            icon: Icons.add_shopping_cart_outlined,
-                            iconSize: Dimension.iconSize16);
+                      GetBuilder<PopularProductController>(
+                          builder: (controller) {
+                        return Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            AppIcon(
+                                icon: Icons.add_shopping_cart_outlined,
+                                iconSize: Dimension.iconSize20),
+                            controller.totalQuantity >= 1
+                                ? Positioned(top:0,right: 0,child:Icon(Icons.circle,color:AppColors.mainColor ,size:Dimension.height20-Dimension.height5,),)
+                                : Container(),
+                            Positioned(
+                              top:2,
+                                right: 4,
+                                child:BigText(
+                              text: controller.totalQuantity.toString(),
+                              size: Dimension.height10,
+                            ))
+                          ],
+                        );
                       })
                     ],
                   )),
@@ -153,9 +170,14 @@ class PopularFoodDetails extends StatelessWidget {
                             child: Icon(Icons.remove),
                             onTap: () {
                               popularProduct.setQuantity(false);
-                            }
-                            ),
+                            }),
+                        SizedBox(
+                          width: Dimension.width10,
+                        ),
                         BigText(text: popularProduct.cartItems.toString()),
+                        SizedBox(
+                          width: Dimension.width10,
+                        ),
                         GestureDetector(
                             onTap: () {
                               popularProduct.setQuantity(true);
@@ -164,20 +186,20 @@ class PopularFoodDetails extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(
-                        left: Dimension.width20,
-                        right: Dimension.width20,
-                        top: Dimension.height20,
-                        bottom: Dimension.height20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimension.radius20),
-                      color: AppColors.mainColor,
-                    ),
-                    child: GestureDetector(
-                      onTap: (){
-                        popularProduct.addItem(product);
-                      },
+                  GestureDetector(
+                    onTap: () {
+                      popularProduct.addItem(product);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          left: Dimension.width20,
+                          right: Dimension.width20,
+                          top: Dimension.height20,
+                          bottom: Dimension.height20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimension.radius20),
+                        color: AppColors.mainColor,
+                      ),
                       child: BigText(
                         text: "\$ ${product.price} |  add to cart",
                       ),
