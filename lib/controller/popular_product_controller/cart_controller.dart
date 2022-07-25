@@ -32,20 +32,20 @@ class CartController extends GetxController {
       if (quantity > 0) {
         items.putIfAbsent(
             products.id!,
-                () =>
-                CartModel(
-                    id: products.id,
-                    name: products.name,
-                    price: products.price,
-                    img: products.img,
-                    quantity: quantity,
-                    isExist: true,
-                    time: DateTime.now().toString()));
+            () => CartModel(
+                id: products.id,
+                name: products.name,
+                price: products.price,
+                img: products.img,
+                quantity: quantity,
+                isExist: true,
+                time: DateTime.now().toString()));
       } else {
         Get.snackbar("Add Items", "Add At least one");
       }
     }
   }
+
   void addItemsRecom(RecommendedProducts products, int quantity) {
     if (items.containsKey(products.id)) {
       var totalQuantity = 0;
@@ -67,15 +67,14 @@ class CartController extends GetxController {
       if (quantity > 0) {
         items.putIfAbsent(
             products.id!,
-                () =>
-                CartModel(
-                    id: products.id,
-                    name: products.name,
-                    price: products.price,
-                    img: products.img,
-                    quantity: quantity,
-                    isExist: true,
-                    time: DateTime.now().toString()));
+            () => CartModel(
+                id: products.id,
+                name: products.name,
+                price: products.price,
+                img: products.img,
+                quantity: quantity,
+                isExist: true,
+                time: DateTime.now().toString()));
       } else {
         Get.snackbar("Add Items", "Add At least one");
       }
@@ -89,6 +88,7 @@ class CartController extends GetxController {
     ;
     return false;
   }
+
   bool ifExistRecom(RecommendedProducts product) {
     if (items.containsKey(product.id)) {
       return true;
@@ -108,6 +108,7 @@ class CartController extends GetxController {
     }
     return quantity;
   }
+
   int getQuantityRecom(RecommendedProducts product) {
     var quantity = 0;
     if (items.containsKey(product.id)) {
@@ -126,5 +127,9 @@ class CartController extends GetxController {
       totalQuanity = totalQuanity + value.quantity!;
     });
     return totalQuanity;
+  }
+
+  List<CartModel> get getCartLis {
+    return items.entries.map((e) => e.value).toList();
   }
 }

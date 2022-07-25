@@ -12,6 +12,8 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/expandable_text.dart';
 import 'package:get/get.dart';
 
+import '../cart/cart_page.dart';
+
 class RecommendedFoodDetails extends StatelessWidget {
   int pageId;
 
@@ -50,9 +52,14 @@ class RecommendedFoodDetails extends StatelessWidget {
                     Stack(
                       alignment: Alignment.topRight,
                       children: [
-                        AppIcon(
-                            icon: Icons.add_shopping_cart_outlined,
-                            iconSize: Dimension.iconSize20),
+                        GestureDetector(
+                          onTap:(){
+                            Get.toNamed(RouteHelper.cart);
+                          },
+                          child: AppIcon(
+                              icon: Icons.add_shopping_cart_outlined,
+                              iconSize: Dimension.iconSize20),
+                        ),
                         recommendedFood.totalQuantity >= 1
                             ? Positioned(
                                 top: 0,

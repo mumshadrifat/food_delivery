@@ -94,10 +94,10 @@ class RecommendedProductController extends GetxController {
 
   int checkQuantity(int quantity) {
     if (_cartItems + quantity > 10) {
-      Get.snackbar("Add Items", "You cant Add more");
+      Get.snackbar("Add Items", "You can't Add more");
       return 10;
     } else if (_cartItems + quantity < 0) {
-      Get.snackbar("Add items", "You cant reduce more");
+      Get.snackbar("Add items", "You can't reduce more");
 
 
       return _quantity;
