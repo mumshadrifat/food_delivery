@@ -24,10 +24,12 @@ class LoginController extends GetxController implements GetxService {
     Response response = loginRepo.getLogin(loginModel) as Response;
     if (response.statusCode == 200) {
       //Save token in sharedPref==>
+      print("success");
       loginRepo.saveUserToken(response.body["token"]);
       authResponseModel = AuthResponseModel(true, response.body["token"]);
     } else {
       authResponseModel = AuthResponseModel(false, response.statusText);
+      print("success");
     }
     update();
     return authResponseModel;

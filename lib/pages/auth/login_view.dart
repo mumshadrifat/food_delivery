@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class LoginView extends StatelessWidget {
+  var authController=Get.find()<LoginController>();
   final emailText = TextEditingController();
   final passwordText = TextEditingController();
 
@@ -44,7 +45,7 @@ class LoginView extends StatelessWidget {
               },
               child: TextButton(
                 onPressed: () {
-                  // callLoginApi();
+                login();
                 },
                 child: Text(
                   'Submit',
@@ -59,8 +60,9 @@ class LoginView extends StatelessWidget {
   }
 
    login() {
-    var authController=Get.find()<LoginController>();
-    LoginModel loginModel=LoginModel(email:emailText.text,password:passwordText.text);
+    print("button Pressed");
+
+    LoginModel loginModel=LoginModel(email:"eve.holt@reqres.in",password:"cityslicka");
     authController.login(loginModel).then((status){
       if(status.success){
         print("Login success");

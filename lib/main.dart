@@ -19,7 +19,7 @@ void main() {
   WidgetsFlutterBinding().ensureVisualUpdate();
   dep.init();
 
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
       title: 'E-Rifat',
 
       home:LoginView(),
-      /*initialRoute: RouteHelper.initial,
-      getPages: RouteHelper.routes,*/
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }
