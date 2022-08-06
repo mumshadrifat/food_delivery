@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data/repository/login_repo.dart';
 
 Future <void> init()async {
-  final sharedPreferences = await SharedPreferences.getInstance();
+ // final sharedPreferences = await SharedPreferences.getInstance();
   // api client
  // Get.lazyPut(() => ApiClient(appBaseUrl: "http://mvs.bslmeiyu.com"));
   Get.lazyPut(() => ApiClient(appBaseUrl: "https://reqres.in"));
@@ -22,7 +22,7 @@ Future <void> init()async {
   Get.lazyPut(() => PopularProductRepo(apiClient:Get.find()));
   Get.lazyPut(() => RecommendedProductRepo(apiClient:Get.find()));
   Get.lazyPut(() => CartRepo());
-  Get.lazyPut(() =>LoginRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+  Get.lazyPut(() =>LoginRepo(apiClient: Get.find()));
   //controller
   Get.lazyPut(() => PopularProductController(popularProductRepo:Get.find()));
   Get.lazyPut(() => RecommendedProductController(recommendedProductRepo:Get.find()));

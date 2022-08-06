@@ -21,15 +21,17 @@ class LoginController extends GetxController implements GetxService {
  Future<AuthResponseModel> login(LoginModel loginModel) async {
     _isLoading = true;
     late AuthResponseModel authResponseModel;
-    Response response = loginRepo.getLogin(loginModel) as Response;
+    Response response =await  loginRepo.getLogin(loginModel) ;
     if (response.statusCode == 200) {
       //Save token in sharedPref==>
       print("success");
-      loginRepo.saveUserToken(response.body["token"]);
+      print(response.body["token"]);
+      //loginRepo.saveUserToken(response.body["token"]);
       authResponseModel = AuthResponseModel(true, response.body["token"]);
     } else {
       authResponseModel = AuthResponseModel(false, response.statusText);
-      print("success");
+      print("failed");
+
     }
     update();
     return authResponseModel;

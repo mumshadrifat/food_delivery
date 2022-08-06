@@ -5,8 +5,12 @@ import 'package:food_delivery/models/login_model.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../models/login_model.dart';
+import '../../models/login_model.dart';
+import '../../models/login_model.dart';
+
 class LoginView extends StatelessWidget {
-  var authController=Get.find()<LoginController>();
+
   final emailText = TextEditingController();
   final passwordText = TextEditingController();
 
@@ -61,16 +65,9 @@ class LoginView extends StatelessWidget {
 
    login() {
     print("button Pressed");
+    Get.find<LoginController>().login(LoginModel(email:"eve.holt@reqres.in",password:"cityslicka"));
 
-    LoginModel loginModel=LoginModel(email:"eve.holt@reqres.in",password:"cityslicka");
-    authController.login(loginModel).then((status){
-      if(status.success){
-        print("Login success");
-      }
-      else{
-        print("Login failed");
-      }
-    });
+
 
 
    }
