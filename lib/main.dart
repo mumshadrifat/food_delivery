@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controller/popular_product_controller/cart_controller.dart';
 import 'package:food_delivery/controller/popular_product_controller/popular_product_controller.dart';
 import 'package:food_delivery/controller/popular_product_controller/recommended_product_controller.dart';
+import 'package:food_delivery/pages/auth/login_view.dart';
 import 'package:food_delivery/pages/food/popular_food_details.dart';
 import 'package:food_delivery/pages/food/recommended_food.dart';
 import 'package:food_delivery/pages/home/food_page.dart';
@@ -33,9 +34,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'E-Rifat',
 
-      home:MyHomePage(),
-      initialRoute: RouteHelper.initial,
-      getPages: RouteHelper.routes,
+      home:LoginView(),
+      /*initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,*/
     );
   }
 }
